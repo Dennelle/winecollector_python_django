@@ -26,28 +26,22 @@ class Wine(models.Model):
         # or updated the cat.
         return reverse('detail', kwargs={'wine_id': self.id})
 
-DAYS = (
-        ('M', "Monday"),
-        ('Tu', 'Tuesday'),
-        ('W', 'Wednesday'),
-        ('Th', 'Thursday'),
-        ('F', 'Friday'),
-        ('Sa', 'Saturday'),
-        ('Su', 'Sunday'),
+SWEETNESS = (
+        ('B', "Bitter"),
+        ('D', 'Dry'),
+        ('S', 'Sweet'),
+        ('VS', 'Very Sweet')
 )
 
-
 class Drinking(models.Model):
-    # first argument is optional and it overrides the label tag
-    # in the form variable
-    date = models.DateField('Drank Date')
-    review = models.CharField(
-        max_length=2,
-        choices=DAYS,  # generate  a select in our form
-        # set the default value to 'B'
-        default=DAYS[0][0]
+    date = models.DateField('Date Drank')
+    sweetness = models.CharField(
+        max_length=1,
+        choices=SWEETNESS,
+        default=SWEETNESS[0][0]
     )
-    # create a cat_id FK (note the _id is automatically added)
+    review = models.CharField(max_length=250)
+
     wine = models.ForeignKey(Wine, on_delete=models.CASCADE)
 
     def __str__(self):
