@@ -12,18 +12,15 @@ class Country(models.Model):
         return reverse('countries_detail', kwargs={'pk': self.id})
 
 class Wine(models.Model):
-    # models.CharField are called field types if you want to google others
+
     name = models.CharField(max_length=100)
     color = models.CharField(max_length=100)
     description = models.TextField(max_length=250)
     age = models.IntegerField()
-    # Many to Many, note Toy must be defined before we reference it
+
     countries = models.ManyToManyField(Country)
 
     def get_absolute_url(self):
-        # self.id refers to the cat you just created
-        # this redirects the user after they created something
-        # or updated the cat.
         return reverse('detail', kwargs={'wine_id': self.id})
 
 SWEETNESS = (
@@ -36,7 +33,7 @@ SWEETNESS = (
 class Drinking(models.Model):
     date = models.DateField('Date Drank')
     sweetness = models.CharField(
-        max_length=1,
+        max_length=2,
         choices=SWEETNESS,
         default=SWEETNESS[0][0]
     )

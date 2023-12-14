@@ -14,7 +14,7 @@ urlpatterns = [
     path('wines/<int:wine_id>/assoc_country/<int:country_id>', views.assoc_country, name='assoc_country'),
     path('countries/', views.CountryList.as_view(), name='countries_index'),
     path('countries/<int:pk>/', views.CountryDetail.as_view(), name='countries_detail'),
-    path('countries/create/', views.CountryCreate.as_view(), name='toys_create'),
+    path('countries/create/', views.CountryCreate.as_view(), name='countries_create'),
     path('countries/<int:pk>/update/', views.CountryUpdate.as_view(), name='countries_update'),
     path('countries/<int:pk>delete/', views.CountryDelete.as_view(), name='countries_update'),
 ]
