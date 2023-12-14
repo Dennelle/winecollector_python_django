@@ -10,10 +10,7 @@
             <span class="card-title">{{ wine.name }}</span>
             <p>Color: {{ wine.color }}</p>
             <p>Description: {{ wine.description }}</p>
-            <p>Age: {{ wine.age > 0 }}</p>
-            {% else %}
-            <p>Age: Is it a grape?</p>
-            {% endif %}
+            <p>Age: {{ wine.age }}</p>
         </div>
     </div>
 </a>

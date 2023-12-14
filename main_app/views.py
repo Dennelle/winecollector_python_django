@@ -51,7 +51,7 @@ def wines_index(request):
 
 def wines_detail(request, wine_id):
     wine = Wine.objects.get(id=wine_id)
-    id_list = wine.toys.all().values_list('id')
+    id_list = wine.countries.all().values_list('id')
     countries_doesnt_have_wine = Country.objects.exclude(id__in=id_list)
     drinking_form = DrinkingForm()
     return render(request, 'wines/detail.html', {'wine':wine, 'drinking_form': drinking_form, 'countries': countries_doesnt_have_wine})
